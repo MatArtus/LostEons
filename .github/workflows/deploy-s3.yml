@@ -6,35 +6,54 @@ on:
   workflow_dispatch: {}
 
 permissions:
-  id-token: write
+  id-token: write # OIDC token to assume the AWS role, no stored keys
   contents: read
+
+env:
+  AWS_ROLE_ARN: arn:aws:iam::677123926390:role/GitHubAction
+  AWS_REGION: eu-north-1 # region the losteonsweb bucket lives in
+  S3_BUCKET: losteonsweb
+  CLOUDFRONT_DISTRIBUTION_ID: E1JZQAG0PF6VMZ # serves www.losteons.com
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
-          node-version: 22
+          node-version: 26
 
       - run: npm ci
       - run: npm run build
 
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v6
         with:
-          role-to-assume: ${{ secrets.AWS_DEPLOY_ROLE_ARN }}
-          aws-region: ${{ secrets.AWS_REGION }}
+          role-to-assume: ${{ env.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
 
-      - name: Sync to S3
+      # Assets first, HTML last, so a page never points at a file that isn't uploaded yet.
+      - name: Upload assets (cached for a day)
         run: |
-          aws s3 sync dist/ "s3://${{ secrets.S3_BUCKET_NAME }}" --delete
+          aws s3 sync dist/ "s3://$S3_BUCKET" \
+            --exclude "*.html" \
+            --cache-control "public, max-age=86400"
 
-      - name: Invalidate CloudFront
-        if: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID != '' }}
+      - name: Upload HTML (revalidated on every visit)
+        run: |
+          aws s3 sync dist/ "s3://$S3_BUCKET" \
+            --exclude "*" --include "*.html" \
+            --cache-control "no-cache"
+
+      - name: Remove files no longer in the build
+        run: |
+          aws s3 sync dist/ "s3://$S3_BUCKET" --delete --size-only
+
+      # Edge caches keep unhashed files (images, fonts) for up to a day; clear them so the deploy shows at once.
+      - name: Clear the CloudFront cache
         run: |
           aws cloudfront create-invalidation \
-            --distribution-id "${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}" \
+            --distribution-id "$CLOUDFRONT_DISTRIBUTION_ID" \
             --paths "/*"

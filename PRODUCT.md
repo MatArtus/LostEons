@@ -53,7 +53,7 @@ The site belongs to the band and to their album world: the upcoming album's own 
 - Final album art: `pochette LostEons .jpg` (cover and back with track list) and `crédit LostEons .jpg` (booklet: per-track credits, centre text, credits and links).
 - Discography (in `src/data/site.ts`, covers in `public/images/`): *Sol Minor* (2021) and *The Kite Paradox* (2024), 10 tracks each, both with cover drawings by Laura Maxwell; released through 8094965 Records DK per Deezer. Bandcamp tags: rock, indie rock, Paris. The single *Beautiful Day* is track 1 of *The Kite Paradox*.
 - Track list (9 tracks) with per-track credits and studios, the booklet's centre text, and album credits: all in `src/data/site.ts`.
-- Confirmed links: Bandcamp (thelosteons.bandcamp.com), Spotify (open.spotify.com/artist/3u2OB1h8muy6SUFhqq1SZn), Deezer (deezer.com/en/artist/287058581), Facebook (facebook.com/the-lost-eons), Flickr (flickr.com/photos/hoap/). Instagram (instagram.com/thelosteons) confirmed. No YouTube channel or Apple Music profile yet (both hidden).
+- Confirmed links: Bandcamp (thelosteons.bandcamp.com), Spotify (open.spotify.com/artist/3u2OB1h8muy6SUFhqq1SZn), Deezer (deezer.com/en/artist/287058581), Facebook (facebook.com/the-lost-eons), Flickr (flickr.com/photos/hoap/). Instagram (instagram.com/thelosteons) confirmed. Apple Music (music.apple.com/us/artist/the-lost-eons/1775385541) confirmed, with album pages for *Sol Minor* and *The Kite Paradox*. No YouTube channel yet (hidden).
 - **Absent, do not fabricate:** song lyrics, video IDs, tour dates, press quotes, and the release date.
 
 ## Product Principles

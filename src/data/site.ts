@@ -16,7 +16,7 @@ The five musicians all play in other projects, and come together every two years
     deezer: "https://www.deezer.com/en/artist/287058581",
     bandcamp: "https://thelosteons.bandcamp.com/",
     // Leave empty to hide a link everywhere on the site.
-    appleMusic: "",
+    appleMusic: "https://music.apple.com/us/artist/the-lost-eons/1775385541",
     flickr: "https://flickr.com/photos/hoap/",
   },
 };
@@ -216,6 +216,7 @@ export const discography: Release[] = [
       { name: "Spotify", href: "https://open.spotify.com/album/1XIvEOiEXPV34bQEcabpt7" },
       { name: "Bandcamp", href: "https://thelosteons.bandcamp.com/album/the-kite-paradox" },
       { name: "Deezer", href: "https://www.deezer.com/album/662398181" },
+      { name: "Apple Music", href: "https://music.apple.com/us/album/the-kite-paradox/1775921753" },
     ],
   },
   {
@@ -240,6 +241,7 @@ export const discography: Release[] = [
       { name: "Spotify", href: "https://open.spotify.com/album/2ToPJch1eioOXxKVa5Ayge" },
       { name: "Bandcamp", href: "https://thelosteons.bandcamp.com/album/sol-minor" },
       { name: "Deezer", href: "https://www.deezer.com/album/662553681" },
+      { name: "Apple Music", href: "https://music.apple.com/us/album/sol-minor/1776046977" },
     ],
   },
 ];

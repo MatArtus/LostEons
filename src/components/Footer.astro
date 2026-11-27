@@ -1,5 +1,9 @@
 ---
 import { band, album } from "../data/site";
+import PlatformIcon from "./PlatformIcon.astro";
+
+// Display names for keys that `capitalize` alone would get wrong.
+const labels: Record<string, string> = { appleMusic: "Apple Music" };
 
 const socials = Object.entries(band.social).filter(([, href]) => href);
 ---
@@ -7,8 +11,9 @@ const socials = Object.entries(band.social).filter(([, href]) => href);
 <footer class="bg-night/70 border-t border-line px-4 py-10 text-center text-sm text-haze">
   <div class="mb-4 flex flex-wrap justify-center gap-x-5 gap-y-2">
     {socials.map(([name, href]) => (
-      <a href={href} target="_blank" rel="noreferrer" class="capitalize transition hover:text-cream">
-        {name}
+      <a href={href} target="_blank" rel="noreferrer" class="inline-flex items-center gap-1.5 capitalize transition hover:text-cream">
+        <PlatformIcon name={name} class="size-3.5" />
+        {labels[name] ?? name}
       </a>
     ))}
   </div>

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: web
-          image: ghcr.io/your-org/losteons-web:latest
+          image: ghcr.io/matartus/losteons:latest
           ports:
             - containerPort: 80
           resources:

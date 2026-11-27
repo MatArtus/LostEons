@@ -1,5 +1,6 @@
 ---
 import { band, streamingLink, orderLink } from "../data/site";
+import PlatformIcon from "./PlatformIcon.astro";
 
 const platforms = [
   { name: "Spotify", href: band.social.spotify },
@@ -17,8 +18,9 @@ const platforms = [
         href={p.href}
         target="_blank"
         rel="noreferrer"
-        class="rounded-full border border-cream/30 px-5 py-2 text-sm font-medium transition hover:border-cream"
+        class="inline-flex items-center gap-2 rounded-full border border-cream/30 py-2 pr-5 pl-4 text-sm font-medium transition hover:border-cream"
       >
+        <PlatformIcon name={p.name} class="size-4" />
         {p.name}
       </a>
     ))}

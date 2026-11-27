@@ -1,0 +1,42 @@
+---
+import { band } from "../data/site";
+---
+
+<div
+  id="bio-modal"
+  class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/80 p-4"
+>
+  <div class="relative max-w-lg rounded-lg border border-neutral-800 bg-neutral-950 p-8">
+    <button
+      id="bio-close"
+      aria-label="Close"
+      class="absolute right-4 top-4 text-neutral-500 transition hover:text-white"
+    >
+      ✕
+    </button>
+    <h2 class="mb-4 font-display text-2xl font-bold tracking-widest uppercase">{band.name}</h2>
+    <p class="whitespace-pre-line text-neutral-400">{band.bio}</p>
+  </div>
+</div>
+
+<script>
+  const trigger = document.getElementById("bio-trigger");
+  const modal = document.getElementById("bio-modal");
+  const closeBtn = document.getElementById("bio-close");
+
+  const open = () => modal?.classList.remove("hidden");
+  const close = () => modal?.classList.add("hidden");
+
+  trigger?.addEventListener("click", (e) => {
+    e.preventDefault();
+    modal?.classList.add("flex");
+    open();
+  });
+  closeBtn?.addEventListener("click", close);
+  modal?.addEventListener("click", (e) => {
+    if (e.target === modal) close();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") close();
+  });
+</script>

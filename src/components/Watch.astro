@@ -1,0 +1,27 @@
+---
+import { videos } from "../data/site";
+---
+
+<section id="watch" class="mx-auto max-w-5xl px-4 py-24">
+  <h2 class="mb-10 text-center font-display text-3xl font-bold tracking-widest uppercase">Watch</h2>
+  {videos.length === 0 || videos.every((v) => !v.youtubeId) ? (
+    <p class="text-center text-neutral-500">Videos coming soon.</p>
+  ) : (
+    <div class="grid gap-6 sm:grid-cols-2">
+      {videos
+        .filter((v) => v.youtubeId)
+        .map((v) => (
+          <div class="aspect-video overflow-hidden rounded-lg border border-neutral-800">
+            <iframe
+              class="h-full w-full"
+              src={`https://www.youtube.com/embed/${v.youtubeId}`}
+              title={v.title}
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        ))}
+    </div>
+  )}
+</section>

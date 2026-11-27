@@ -1,0 +1,39 @@
+---
+import { band } from "../data/site";
+
+const links = [
+  { href: "#listen", label: "Listen" },
+  { href: "#watch", label: "Watch" },
+  { href: "#lyrics", label: "Lyrics" },
+  { href: "#live", label: "Live" },
+  { href: "#signup", label: "Sign Up" },
+];
+---
+
+<header class="sticky top-0 z-50 border-b border-neutral-800 bg-black/80 backdrop-blur">
+  <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
+    <a href="#top" class="font-display text-lg font-bold tracking-widest uppercase">
+      {band.name}
+    </a>
+    <nav class="hidden gap-6 text-sm font-medium tracking-wide uppercase sm:flex">
+      {links.map((l) => (
+        <a href={l.href} class="text-neutral-300 transition hover:text-white">
+          {l.label}
+        </a>
+      ))}
+    </nav>
+    <button
+      id="bio-trigger"
+      class="text-sm font-medium tracking-wide uppercase text-neutral-300 transition hover:text-white"
+    >
+      Bio
+    </button>
+  </div>
+  <nav class="flex gap-4 overflow-x-auto border-t border-neutral-800 px-4 py-2 text-xs font-medium tracking-wide uppercase sm:hidden">
+    {links.map((l) => (
+      <a href={l.href} class="shrink-0 text-neutral-300 transition hover:text-white">
+        {l.label}
+      </a>
+    ))}
+  </nav>
+</header>

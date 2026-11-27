@@ -1,0 +1,16 @@
+---
+import { band } from "../data/site";
+
+const socials = Object.entries(band.social).filter(([, href]) => href);
+---
+
+<footer class="border-t border-neutral-800 px-4 py-10 text-center text-sm text-neutral-500">
+  <div class="mb-4 flex justify-center gap-5">
+    {socials.map(([name, href]) => (
+      <a href={href} target="_blank" rel="noreferrer" class="capitalize transition hover:text-white">
+        {name}
+      </a>
+    ))}
+  </div>
+  <p>&copy; {new Date().getFullYear()} {band.name}. All rights reserved.</p>
+</footer>

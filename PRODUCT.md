@@ -30,7 +30,8 @@ The site belongs to the band and to their album world: the upcoming album's own 
 
 ## Capabilities and Constraints
 
-- Single-page static site: hero, listen & order, watch (YouTube embeds), lyrics, live dates, mailing-list signup, bio modal, footer.
+- Single-page static site: hero, listen & order, album (booklet text, track list, credits), discography, mailing-list signup, bio modal, footer.
+- Watch (YouTube embeds) and Live (tour dates) are hidden for now: no videos or shows yet. They reappear automatically once `videos` or `shows` in `src/data/site.ts` have content.
 - Astro + Tailwind v4, zero-backend static build; deployed to S3/CloudFront or an nginx container on Kubernetes.
 - All band content lives in `src/data/site.ts`; non-developers in the band edit it there.
 - Mailing list provider not chosen yet (`signupFormAction` empty).

@@ -254,6 +254,8 @@ export const videos: Video[] = [
   { title: "Official Video", youtubeId: "" },
 ];
 
+export const publishedVideos = videos.filter((v) => v.youtubeId);
+
 export type ShowDate = {
   date: string; // ISO date, e.g. "2026-12-05"
   city: string;
@@ -264,6 +266,14 @@ export type ShowDate = {
 export const shows: ShowDate[] = [
   // Add upcoming tour dates here.
 ];
+
+// Sections that stay hidden until they have content:
+// - Watch (and its menu link) appears once a video has a youtubeId.
+// - Live (its menu link and the hero's "Tour Dates" button) appears once a show is listed.
+export const sections = {
+  watch: publishedVideos.length > 0,
+  live: shows.length > 0,
+};
 
 export const streamingLink = "https://your-fanlink-or-smartlink-url.example";
 export const orderLink = "https://your-store-or-fanlink-url.example";

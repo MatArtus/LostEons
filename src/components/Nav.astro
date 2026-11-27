@@ -3,35 +3,36 @@ import { band } from "../data/site";
 
 const links = [
   { href: "#listen", label: "Listen" },
+  { href: "#album", label: "Album" },
+  { href: "#discography", label: "Discography" },
   { href: "#watch", label: "Watch" },
-  { href: "#lyrics", label: "Lyrics" },
   { href: "#live", label: "Live" },
   { href: "#signup", label: "Sign Up" },
 ];
 ---
 
-<header class="sticky top-0 z-50 border-b border-neutral-800 bg-black/80 backdrop-blur">
+<header class="fixed inset-x-0 top-0 z-50 border-b border-line bg-night/70 backdrop-blur-md">
   <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
-    <a href="#top" class="font-display text-lg font-bold tracking-widest uppercase">
+    <a href="#top" class="font-display text-base font-normal tracking-[0.28em] uppercase">
       {band.name}
     </a>
     <nav class="hidden gap-6 text-sm font-medium tracking-wide uppercase sm:flex">
       {links.map((l) => (
-        <a href={l.href} class="text-neutral-300 transition hover:text-white">
+        <a href={l.href} class="text-mist transition hover:text-cream">
           {l.label}
         </a>
       ))}
     </nav>
     <button
       id="bio-trigger"
-      class="text-sm font-medium tracking-wide uppercase text-neutral-300 transition hover:text-white"
+      class="text-sm font-medium tracking-wide uppercase text-mist transition hover:text-cream"
     >
       Bio
     </button>
   </div>
-  <nav class="flex gap-4 overflow-x-auto border-t border-neutral-800 px-4 py-2 text-xs font-medium tracking-wide uppercase sm:hidden">
+  <nav class="flex gap-4 overflow-x-auto border-t border-line px-4 py-2 text-xs font-medium tracking-wide uppercase sm:hidden">
     {links.map((l) => (
-      <a href={l.href} class="shrink-0 text-neutral-300 transition hover:text-white">
+      <a href={l.href} class="shrink-0 text-mist transition hover:text-cream">
         {l.label}
       </a>
     ))}

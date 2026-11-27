@@ -11,19 +11,22 @@ from a tiny nginx container on Kubernetes.
 Almost all band-specific content lives in one file: `src/data/site.ts`.
 Edit it to set:
 
-- Band name, tagline, bio, email, social links
-- Track list / lyrics (`tracks`)
+- Band name, tagline, description, bio, email, social links (leave a link empty to hide it)
+- Band members (`members`)
+- The new album: title, release status, credits, booklet text (`album`) and track list with per-track credits and optional lyrics (`tracks`)
+- Earlier albums (`discography`)
 - Video embeds (`videos`, YouTube IDs)
 - Tour dates (`shows`)
 - Streaming / order links (fanlink, Bandcamp, store)
 - Mailing list form action (`signupFormAction`)
 
 Page sections are in `src/components/`, one file per section
-(`Hero.astro`, `Listen.astro`, `Watch.astro`, `Lyrics.astro`, `Live.astro`,
-`SignUp.astro`, `BioModal.astro`, `Footer.astro`), assembled in
+(`Hero.astro`, `Listen.astro`, `Album.astro`, `Discography.astro`, `Watch.astro`,
+`Live.astro`, `SignUp.astro`, `BioModal.astro`, `Footer.astro`), assembled in
 `src/pages/index.astro`.
 
-Images go in `public/images/`.
+Images go in `public/images/` (compressed WebP); the self-hosted Open Sans font is in `public/fonts/`.
+Product context for design work is in `PRODUCT.md`.
 
 ## Commands
 
@@ -72,7 +75,7 @@ kubectl apply -f k8s/deployment.yaml
 
 The content here (hero, embeds, lyrics, show dates, a signup form) doesn't
 need a backend or client-side framework — Astro ships zero JS by default and
-only the bio modal/lyrics accordion use a few lines of vanilla JS/native
+only the bio modal and the track-list accordions use a few lines of vanilla JS/native
 `<details>`. That keeps the site fast and lets it deploy as plain static
 files to S3, or as a minimal nginx container if you'd rather run it in the
 cluster.

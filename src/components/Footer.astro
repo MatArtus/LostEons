@@ -1,16 +1,16 @@
 ---
-import { band } from "../data/site";
+import { band, album } from "../data/site";
 
 const socials = Object.entries(band.social).filter(([, href]) => href);
 ---
 
-<footer class="border-t border-neutral-800 px-4 py-10 text-center text-sm text-neutral-500">
-  <div class="mb-4 flex justify-center gap-5">
+<footer class="bg-night/70 border-t border-line px-4 py-10 text-center text-sm text-haze">
+  <div class="mb-4 flex flex-wrap justify-center gap-x-5 gap-y-2">
     {socials.map(([name, href]) => (
-      <a href={href} target="_blank" rel="noreferrer" class="capitalize transition hover:text-white">
+      <a href={href} target="_blank" rel="noreferrer" class="capitalize transition hover:text-cream">
         {name}
       </a>
     ))}
   </div>
-  <p>&copy; {new Date().getFullYear()} {band.name}. All rights reserved.</p>
+  <p>&copy; {new Date().getFullYear()} {band.name} · {album.label}. All rights reserved.</p>
 </footer>

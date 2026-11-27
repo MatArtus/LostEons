@@ -1,0 +1,53 @@
+---
+import { discography } from "../data/site";
+---
+
+<section id="discography" class="mx-auto max-w-5xl px-4 py-24">
+  <h2 class="heading mb-14 text-center">Discography</h2>
+
+  <div class="grid gap-16 sm:grid-cols-2 sm:gap-12">
+    {discography.map((release) => (
+      <article class="flex flex-col">
+        <img
+          src={release.cover}
+          alt={`${release.title} album cover. ${release.coverCredit}.`}
+          width="640"
+          height="640"
+          loading="lazy"
+          decoding="async"
+          class="aspect-square w-full rounded-sm object-cover shadow-[0_24px_48px_-20px_oklch(0.08_0.03_300/0.9)]"
+        />
+        <div class="mt-6 flex items-baseline justify-between gap-4">
+          <h3 class="text-xl font-light tracking-[0.14em]">{release.title}</h3>
+          <span class="text-sm tabular-nums text-haze">{release.year}</span>
+        </div>
+        <p class="mt-1 text-sm text-haze">
+          {release.tracks.length} tracks · {release.minutes} min · {release.coverCredit}
+        </p>
+
+        <details class="group mt-4 border-y border-line">
+          <summary class="flex cursor-pointer list-none items-center justify-between py-3 text-xs font-semibold tracking-[0.2em] uppercase text-mist transition hover:text-cream">
+            Tracklist
+            <svg aria-hidden="true" viewBox="0 0 24 24" class="size-4 text-haze transition group-open:rotate-45" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M12 5v14M5 12h14" /></svg>
+          </summary>
+          <ol class="list-decimal space-y-1 pb-4 pl-6 text-sm text-mist marker:text-xs marker:tabular-nums marker:text-haze">
+            {release.tracks.map((t) => <li class="pl-1">{t}</li>)}
+          </ol>
+        </details>
+
+        <div class="mt-5 flex flex-wrap gap-3">
+          {release.links.map((l) => (
+            <a
+              href={l.href}
+              target="_blank"
+              rel="noreferrer"
+              class="rounded-full border border-cream/30 px-4 py-1.5 text-xs font-semibold tracking-wide uppercase transition hover:border-cream"
+            >
+              {l.name}
+            </a>
+          ))}
+        </div>
+      </article>
+    ))}
+  </div>
+</section>

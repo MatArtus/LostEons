@@ -1,24 +1,62 @@
 ---
-import { band } from "../data/site";
+import { band, album } from "../data/site";
 ---
 
-<section id="top" class="flex min-h-[80vh] flex-col items-center justify-center gap-6 px-4 text-center">
-  <h1 class="font-display text-5xl font-black tracking-widest uppercase sm:text-7xl">
-    {band.name}
-  </h1>
-  <p class="max-w-xl text-lg text-neutral-400">{band.tagline}</p>
-  <div class="flex gap-4">
-    <a
-      href="#listen"
-      class="rounded-full bg-white px-6 py-3 text-sm font-semibold tracking-wide uppercase text-black transition hover:bg-neutral-200"
-    >
-      Listen Now
-    </a>
-    <a
-      href="#live"
-      class="rounded-full border border-neutral-600 px-6 py-3 text-sm font-semibold tracking-wide uppercase transition hover:border-white"
-    >
-      Tour Dates
-    </a>
+<section
+  id="top"
+  class="relative isolate flex min-h-[100svh] flex-col items-center overflow-hidden px-4 text-center"
+>
+  <img
+    src="/images/album-cover-2000.webp"
+    srcset="/images/album-cover-1200.webp 1200w, /images/album-cover-2000.webp 2000w"
+    sizes="100vw"
+    alt="Common Absence album artwork: two blue spires rise from a crimson plain as a pale wave breaks under a violet sky."
+    fetchpriority="high"
+    decoding="async"
+    class="hero-art absolute inset-0 -z-20 h-full w-full object-cover object-[28%_70%] sm:object-[center_42%]"
+  />
+  <!-- Scrims: darken the sky behind the type and melt the base into the page. -->
+  <div
+    aria-hidden="true"
+    class="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_70%_45%_at_50%_32%,oklch(0.14_0.035_300/0.55),transparent_75%)]"
+  >
+  </div>
+  <div
+    aria-hidden="true"
+    class="absolute inset-x-0 bottom-0 -z-10 h-2/5 bg-gradient-to-t from-night/[0.78] via-night/40 to-transparent"
+  >
+  </div>
+
+  <div class="flex flex-1 flex-col items-center justify-center gap-5 pt-28 pb-[30svh] sm:pb-[26svh]">
+    <!-- Mirrors the cover lettering: band name in spaced capitals, album title in spaced lowercase. -->
+    <h1 class="flex flex-col items-center gap-3 drop-shadow-[0_4px_24px_oklch(0.14_0.035_300/0.65)]">
+      <span class="pl-[0.2em] text-[clamp(1.75rem,7.6vw,5.25rem)] leading-none font-normal tracking-[0.2em] uppercase text-cream">
+        {band.name}
+      </span>
+      <span class="pl-[0.42em] text-[clamp(1.125rem,3.6vw,2.5rem)] leading-tight font-light tracking-[0.42em] text-surf">
+        {album.title}
+      </span>
+    </h1>
+    <p class="text-xs font-semibold tracking-[0.28em] uppercase text-cream/90 drop-shadow-[0_2px_12px_oklch(0.14_0.035_300/0.8)]">
+      New album <span aria-hidden="true" class="mx-1.5 text-surf/70">·</span>
+      {album.status === "upcoming" ? "Coming soon" : "Out now"}
+    </p>
+    <p class="max-w-xl text-base font-light italic text-mist drop-shadow-[0_2px_12px_oklch(0.14_0.035_300/0.8)]">
+      {band.tagline}
+    </p>
+    <div class="mt-3 flex flex-wrap justify-center gap-4">
+      <a
+        href="#listen"
+        class="rounded-full bg-cream px-6 py-3 text-sm font-semibold tracking-wide uppercase text-night shadow-[0_8px_24px_-8px_oklch(0.14_0.035_300/0.7)] transition hover:bg-surf"
+      >
+        Listen Now
+      </a>
+      <a
+        href="#live"
+        class="rounded-full border border-cream/50 bg-night/30 px-6 py-3 text-sm font-semibold tracking-wide uppercase backdrop-blur-sm transition hover:border-cream hover:bg-night/50"
+      >
+        Tour Dates
+      </a>
+    </div>
   </div>
 </section>

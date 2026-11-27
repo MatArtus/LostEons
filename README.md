@@ -15,8 +15,8 @@ Edit it to set:
 - Band members (`members`)
 - The new album: title, release status, credits, booklet text (`album`) and track list with per-track credits and optional lyrics (`tracks`)
 - Earlier albums (`discography`)
-- Video embeds (`videos`, YouTube IDs)
-- Tour dates (`shows`)
+- Video embeds (`videos`, YouTube IDs): the Watch section stays hidden until a video has an ID
+- Tour dates (`shows`): the Live section and the hero's Tour Dates button stay hidden until a show is listed
 - Streaming / order links (fanlink, Bandcamp, store)
 - Mailing list form action (`signupFormAction`)
 

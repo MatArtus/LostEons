@@ -1,5 +1,5 @@
 ---
-import { band, album } from "../data/site";
+import { band, album, sections } from "../data/site";
 ---
 
 <section
@@ -51,12 +51,14 @@ import { band, album } from "../data/site";
       >
         Listen Now
       </a>
-      <a
-        href="#live"
-        class="rounded-full border border-cream/50 bg-night/30 px-6 py-3 text-sm font-semibold tracking-wide uppercase backdrop-blur-sm transition hover:border-cream hover:bg-night/50"
-      >
-        Tour Dates
-      </a>
+      {sections.live && (
+        <a
+          href="#live"
+          class="rounded-full border border-cream/50 bg-night/30 px-6 py-3 text-sm font-semibold tracking-wide uppercase backdrop-blur-sm transition hover:border-cream hover:bg-night/50"
+        >
+          Tour Dates
+        </a>
+      )}
     </div>
   </div>
 </section>

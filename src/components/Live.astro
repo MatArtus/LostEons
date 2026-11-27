@@ -11,31 +11,27 @@ const formatDate = (iso: string) =>
 
 <section id="live" class="mx-auto max-w-3xl px-4 py-24">
   <h2 class="mb-10 text-center heading">Live</h2>
-  {shows.length === 0 ? (
-    <p class="text-center text-haze">No shows booked yet — check back soon.</p>
-  ) : (
-    <ul class="divide-y divide-line border-y border-line">
-      {shows.map((show) => (
-        <li class="flex flex-wrap items-center justify-between gap-2 py-4">
-          <div>
-            <p class="font-medium">{show.city}</p>
-            <p class="text-sm text-haze">{show.venue}</p>
-          </div>
-          <div class="flex items-center gap-4">
-            <span class="text-sm tracking-wide text-mist">{formatDate(show.date)}</span>
-            {show.ticketUrl && (
-              <a
-                href={show.ticketUrl}
-                target="_blank"
-                rel="noreferrer"
-                class="rounded-full border border-cream/45 px-4 py-1.5 text-xs font-semibold tracking-wide uppercase transition hover:border-cream"
-              >
-                Tickets
-              </a>
-            )}
-          </div>
-        </li>
-      ))}
-    </ul>
-  )}
+  <ul class="divide-y divide-line border-y border-line">
+    {shows.map((show) => (
+      <li class="flex flex-wrap items-center justify-between gap-2 py-4">
+        <div>
+          <p class="font-medium">{show.city}</p>
+          <p class="text-sm text-haze">{show.venue}</p>
+        </div>
+        <div class="flex items-center gap-4">
+          <span class="text-sm tracking-wide text-mist">{formatDate(show.date)}</span>
+          {show.ticketUrl && (
+            <a
+              href={show.ticketUrl}
+              target="_blank"
+              rel="noreferrer"
+              class="rounded-full border border-cream/45 px-4 py-1.5 text-xs font-semibold tracking-wide uppercase transition hover:border-cream"
+            >
+              Tickets
+            </a>
+          )}
+        </div>
+      </li>
+    ))}
+  </ul>
 </section>

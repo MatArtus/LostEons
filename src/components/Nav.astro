@@ -1,14 +1,14 @@
 ---
-import { band } from "../data/site";
+import { band, sections } from "../data/site";
 
 const links = [
   { href: "#listen", label: "Listen" },
   { href: "#album", label: "Album" },
   { href: "#discography", label: "Discography" },
-  { href: "#watch", label: "Watch" },
-  { href: "#live", label: "Live" },
+  { href: "#watch", label: "Watch", show: sections.watch },
+  { href: "#live", label: "Live", show: sections.live },
   { href: "#signup", label: "Sign Up" },
-];
+].filter((l) => l.show !== false);
 ---
 
 <header class="fixed inset-x-0 top-0 z-50 border-b border-line bg-night/70 backdrop-blur-md">

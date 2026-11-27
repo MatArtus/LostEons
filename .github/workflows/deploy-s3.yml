@@ -11,8 +11,9 @@ permissions:
 
 env:
   AWS_ROLE_ARN: arn:aws:iam::677123926390:role/GitHubAction
-  AWS_REGION: us-east-1
+  AWS_REGION: eu-north-1 # region the losteonsweb bucket lives in
   S3_BUCKET: losteonsweb
+  CLOUDFRONT_DISTRIBUTION_ID: E1JZQAG0PF6VMZ # serves www.losteons.com
 
 jobs:
   build-and-deploy:
@@ -49,3 +50,10 @@ jobs:
       - name: Remove files no longer in the build
         run: |
           aws s3 sync dist/ "s3://$S3_BUCKET" --delete --size-only
+
+      # Edge caches keep unhashed files (images, fonts) for up to a day; clear them so the deploy shows at once.
+      - name: Clear the CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id "$CLOUDFRONT_DISTRIBUTION_ID" \
+            --paths "/*"
